@@ -7,18 +7,15 @@ Shift Baru: C
 ## Penjelasan Konfigurasi Firebase dan Otorisasi Google
 
 1. Menyiapkan Firebase
-
-Konfigurasikan Firebase dalam file seperti `utils/firebase.ts`. Pastikan Firebase telah diinisialisasi dengan benar dan `auth` dari Firebase telah diimpor untuk mengelola autentikasi pengguna.
+   Konfigurasikan Firebase dalam file seperti `utils/firebase.ts`. Pastikan Firebase telah diinisialisasi dengan benar dan `auth` dari Firebase telah diimpor untuk mengelola autentikasi pengguna.
 
 2. Login dengan Akun Google
-   
-**Fitur Login**
-
-![Lampiran Login](login.jpeg)
-Aplikasi memungkinkan pengguna untuk masuk menggunakan akun Google. Di halaman login (`LoginPage.vue`), terdapat tombol yang menjalankan metode `loginWithGoogle` pada `authStore` saat ditekan untuk memulai proses login Google.
-Metode `loginWithGoogle` ini berada dalam `authStore`, yaitu store yang mengelola status autentikasi pengguna. Metode ini memicu proses login melalui Firebase, mengizinkan pengguna masuk dengan akun Google mereka.
-a. Fungsi `signInWithPopup(auth, provider)` dari Firebase menampilkan jendela popup yang meminta pengguna untuk masuk dengan akun Google. Fungsi ini mengembalikan objek dengan data pengguna yang berhasil login.
-b. Setelah berhasil login, data pengguna seperti `displayName`, `email`, dan foto profil akan disimpan dalam `authStore`.
+   **Fitur Login**
+   ![Lampiran Login](login.jpeg)
+   Aplikasi memungkinkan pengguna untuk masuk menggunakan akun Google. Di halaman login (`LoginPage.vue`), terdapat tombol yang menjalankan metode `loginWithGoogle` pada `authStore` saat ditekan untuk memulai proses login Google.
+   Metode `loginWithGoogle` ini berada dalam `authStore`, yaitu store yang mengelola status autentikasi pengguna. Metode ini memicu proses login melalui Firebase, mengizinkan pengguna masuk dengan akun Google mereka.
+   a. Fungsi `signInWithPopup(auth, provider)` dari Firebase menampilkan jendela popup yang meminta pengguna untuk masuk dengan akun Google. Fungsi ini mengembalikan objek dengan data pengguna yang berhasil login.
+   b. Setelah berhasil login, data pengguna seperti `displayName`, `email`, dan foto profil akan disimpan dalam `authStore`.
 
 4. Pengelolaan Status Pengguna dengan `authStore`
 **Data Pengguna Setelah Login**
