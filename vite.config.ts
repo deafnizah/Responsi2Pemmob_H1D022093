@@ -16,6 +16,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    outDir: 'www', // Mengarahkan hasil build ke folder `www` alih-alih `dist`
+  },
   test: {
     globals: true,
     environment: 'jsdom'
