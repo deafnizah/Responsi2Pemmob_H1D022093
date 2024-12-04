@@ -31,6 +31,8 @@
                 <ion-card-header>
                   <ion-card-title class="ion-text-wrap limited-text">{{ todo.title }}</ion-card-title>
                   <ion-card-subtitle class="limited-text">{{ todo.description }}</ion-card-subtitle>
+                  <ion-card-subtitle class="limited-text">{{ todo.ingredients }}</ion-card-subtitle>
+                  <ion-card-subtitle class="limited-text">{{ todo.steps }}</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
                   <ion-badge>{{ getRelativeTime(todo.updatedAt) }}</ion-badge>
@@ -48,7 +50,7 @@
             </ion-item-options>
           </ion-item-sliding>
           <ion-item v-if="activeTodos.length === 0" class="ion-text-center">
-            <ion-label>No active todos</ion-label>
+            <ion-label>No Recipes</ion-label>
           </ion-item>
         </ion-list>
       </div>
@@ -95,7 +97,7 @@
                   </ion-item-options>
                 </ion-item-sliding>
                 <ion-item v-if="completedTodos.length === 0" class="ion-text-center">
-                  <ion-label>No completed todos</ion-label>
+                  <ion-label>No completed Recipes</ion-label>
                 </ion-item>
               </ion-list>
             </div>
@@ -223,8 +225,10 @@ const isOpen = ref(false);
 const editingId = ref<string | null>(null);
 const todos = ref<Todo[]>([]);
 const todo = ref<Omit<Todo, "id" | "createdAt" | "updatedAt" | "status">>({
-  title: "",
-  description: "",
+    title: '',
+    description: '',
+    ingredients: '', // Tambahkan properti ini
+    steps: ''        // Tambahkan properti in
 });
 const activeTodos = computed(() => todos.value.filter((todo) => !todo.status));
 const completedTodos = computed(() => todos.value.filter((todo) => todo.status));
@@ -299,10 +303,10 @@ const handleSubmit = async (todo: Omit<Todo, "id" | "createdAt" | "updatedAt" | 
   try {
     if (editingId.value) {
       await firestoreService.updateTodo(editingId.value, todo as Todo);
-      await showToast("Todo updated successfully", "success", checkmarkCircle);
+      await showToast("Recipe updated successfully", "success", checkmarkCircle);
     } else {
       await firestoreService.addTodo(todo as Todo);
-      await showToast("Todo added successfully", "success", checkmarkCircle);
+      await showToast("Recipe added successfully", "success", checkmarkCircle);
     }
     loadTodos();
   } catch (error) {
@@ -317,17 +321,17 @@ const handleEdit = async (editTodo: Todo) => {
   const slidingItem = itemRefs.value.get(editTodo.id!);
   await slidingItem?.close();
   editingId.value = editTodo.id!;
-  todo.value = { title: editTodo.title, description: editTodo.description };
+  todo.value = { title: editTodo.title, description: editTodo.description, ingredients:editTodo.ingredients, steps:editTodo.steps };
   isOpen.value = true;
 };
 
 const handleDelete = async (deleteTodo: Todo) => {
   try {
     await firestoreService.deleteTodo(deleteTodo.id!);
-    await showToast("Todo deleted successfully", "success", checkmarkCircle);
+    await showToast("Recipe deleted successfully", "success", checkmarkCircle);
     loadTodos();
   } catch (error) {
-    await showToast("Failed to delete todo", "danger", closeCircle);
+    await showToast("Failed to delete recipe", "danger", closeCircle);
     console.error(error);
   }
 };

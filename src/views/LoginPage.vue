@@ -4,7 +4,8 @@
             <div id="container">
                 <!-- Title -->
                 <ion-text style="margin-bottom: 20px; text-align: center;">
-                    <h1>Praktikum Pemrograman Mobile</h1>
+                    <h1>Ratatouille</h1>
+                    <h2>The Recipe</h2>
                 </ion-text>
 
                 <!-- Button Sign In -->

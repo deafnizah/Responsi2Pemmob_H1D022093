@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
     const loginWithGoogle = async () => {
         try {
             await GoogleAuth.initialize({
-                clientId: '86538314041-r65s5kfb8kjlk2ncel3lhs9mkonsk5sh.apps.googleusercontent.com',
+                clientId: '160997086643-6ktn1psml6nqmuk7374orihq3c8ljimg.apps.googleusercontent.com',
                 scopes: ['profile', 'email'],
                 grantOfflineAccess: true,
             });

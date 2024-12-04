@@ -3,12 +3,12 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCTSmLcUROCtIKnV4Vpu-QfMDuyPEbRYow",
-    authDomain: "vue-firebase-7ad0a.firebaseapp.com",
-    projectId: "vue-firebase-7ad0a",
-    storageBucket: "vue-firebase-7ad0a.firebasestorage.app",
-    messagingSenderId: "86538314041",
-    appId: "1:86538314041:web:dc856bca1b80cacc5a48e8"
+    apiKey: "AIzaSyA5d_wcWV3Rvz2KpY_JgPWEUMSZdRs4ci0",
+    authDomain: "resep-7f82a.firebaseapp.com",
+    projectId: "resep-7f82a",
+    storageBucket: "resep-7f82a.firebasestorage.app",
+    messagingSenderId: "160997086643",
+    appId: "1:160997086643:web:20ac8dc5f9c5d49652e7c6"
 };
 
 const firebase = initializeApp(firebaseConfig);

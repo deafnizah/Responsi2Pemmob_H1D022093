@@ -17,6 +17,8 @@ export interface Todo {
     id?: string;
     title: string;
     description: string;
+    ingredients: string;
+    steps: string
     status: boolean;
     createdAt: Timestamp;
     updatedAt: Timestamp;
